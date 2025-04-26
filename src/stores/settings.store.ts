@@ -73,24 +73,6 @@ export const useSettingsStore = defineStore('Setting', () => {
       settings.value.fontFamily = FontFamilyEnum.ENGLISH
     }
   }
-  const { width } = useWindowSize()
-  const breakpoint = computed(() => {
-    if (width.value < 480) {
-      return 'xs'
-    } else if (width.value >= 480 && width.value < 576) {
-      return 'sm'
-    } else if (width.value >= 576 && width.value < 768) {
-      return 'md'
-    } else if (width.value >= 768 && width.value < 992) {
-      return 'lg'
-    } else if (width.value >= 992 && width.value < 1200) {
-      return 'xl'
-    } else if (width.value >= 1200 && width.value < 1600) {
-      return 'xxl'
-    } else {
-      return 'xxxl'
-    }
-  })
 
   return {
     settings,
@@ -98,6 +80,5 @@ export const useSettingsStore = defineStore('Setting', () => {
     theme,
     setLanguageConfig,
     fullscreen: { ...fullscreen, appRef },
-    breakpoint,
   }
 })
