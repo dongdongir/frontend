@@ -1,11 +1,29 @@
 import { createRouter, createWebHistory } from "@ionic/vue-router";
 import { RouteRecordRaw } from "vue-router";
 import TabsPage from "../views/TabsPage.vue";
+import { Component } from "ionicons/dist/types/stencil-public-runtime";
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
     redirect: "/tabs/users",
+  },
+  {
+    path: "/auth",
+    name: "AuthLayout",
+    component: () => import("@/layouts/AuthLayout.vue"),
+    children: [
+      {
+        path: "login",
+        name: "TheLogin",
+        component: () => import("@/views/auth/TheLogin.vue"),
+      },
+      {
+        path: "register",
+        name: "TheRegister",
+        component: () => import("@/views/auth/TheRegister.vue"),
+      },
+    ],
   },
   {
     path: "/tabs/",

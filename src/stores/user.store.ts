@@ -1,23 +1,30 @@
+import { useUserService } from "@/services/user.service";
 import { defineStore } from "pinia";
-import { ref } from "vue";
+import { computed, ref } from "vue";
+import type { IUser } from "@/types/user.interface";
 
 export const useUserStore = defineStore("user", () => {
-  const users = ref([
-    {
-      id: "1",
-      order: 1,
-      name: "Amir",
-    },
-    {
-      id: "2",
-      order: 2,
-      name: "Ali",
-    },
-    {
-      id: "3",
-      order: 3,
-      name: "Amin",
-    },
-  ]);
-  return { users };
+  const userService = useUserService();
+
+  const currentUser = ref<IUser.Content | null>(null);
+  const users = ref<IUser.Content[]>([]);
+  const isLoading = ref(false);
+  const error = ref<Error | null>(null);
+
+  const isAdmin = computed(
+    () => currentUser.value?.roles.includes("ADMIN") || false
+  );
+
+  const getById = async (id: IUser.Id) => {
+    isLoading.value = true;
+    try {
+      await userService.getById(id);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      isLoading.value = false;
+    }
+  };
+
+  return { currentUser, users, isAdmin, isLoading, error, getById };
 });
