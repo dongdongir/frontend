@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="bg-red-500 dark:bg-black">
     <Form>
       <FormItem label="sdfsdf">
         <Input />
