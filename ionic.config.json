@@ -1,7 +1,0 @@
-{
-  "name": "dongdong",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "vue-vite"
-}
