@@ -15,13 +15,8 @@ import { ConfigProvider } from 'ant-design-vue/es'
 import { RouterView } from 'vue-router'
 import { useSettingsStore } from '@/stores/settings.store'
 import { computed, onMounted, watch } from 'vue'
-import { useI18n } from 'vue-i18n'
-import { theme } from 'ant-design-vue'
 import { useCssVariables } from '@/composable/cssVariables.composable'
 
-const { useToken } = theme
-const { token } = useToken()
-const { t } = useI18n()
 const { updateColors } = useCssVariables()
 
 const settingsStore = useSettingsStore()
