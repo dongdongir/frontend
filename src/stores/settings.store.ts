@@ -23,8 +23,8 @@ export const useSettingsStore = defineStore('Setting', () => {
     componentSize: ComponentSizeEnum.MIDDLE,
     fontFamily: FontFamilyEnum.ENGLISH,
     colorPrimary: '#2893ff',
-    isDark: false,
-    isCompact: false as boolean,
+    isDark: true,
+    isCompact: true as boolean,
   })
 
   const appRef = ref()
