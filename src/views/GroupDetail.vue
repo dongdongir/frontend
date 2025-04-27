@@ -21,8 +21,8 @@
       </div>
 
       <div class="flex justify-around">
-        <IonButton color="primary" @click="confirm"> افزودن </IonButton>
-        <IonButton color="medium" @click="cancel"> انصراف </IonButton>
+        <!-- <IonButton color="primary" @click="confirm"> افزودن </IonButton>
+        <IonButton color="medium" @click="cancel"> انصراف </IonButton> -->
       </div>
     </IonContent>
   </div>
