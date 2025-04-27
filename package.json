@@ -19,7 +19,6 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
-    "@tailwindcss/vite": "^4.1.4",
     "@tanstack/vue-query": "^5.74.6",
     "@vueuse/core": "^13.1.0",
     "@zoomit/dayjs-jalali-plugin": "^0.1.11",
@@ -28,7 +27,6 @@
     "html2canvas": "^1.4.1",
     "lodash": "^4.17.21",
     "pinia": "^3.0.1",
-    "tailwindcss": "^4.1.4",
     "tinycolor2": "^1.6.0",
     "vue": "^3.5.13",
     "vue-i18n": "^11.1.3",
@@ -43,6 +41,7 @@
     "@types/lodash": "^4.17.16",
     "@types/node": "^22.14.0",
     "@types/tinycolor2": "^1.4.6",
+    "@unocss/transformer-directives": "^66.1.0-beta.12",
     "@vitejs/plugin-vue": "^5.2.3",
     "@vitest/eslint-plugin": "^1.1.39",
     "@vue/eslint-config-prettier": "^10.2.0",
@@ -62,6 +61,7 @@
     "prettier": "3.5.3",
     "start-server-and-test": "^2.0.11",
     "typescript": "~5.8.0",
+    "unocss": "^66.1.0-beta.12",
     "vite": "^6.2.4",
     "vite-plugin-pwa": "^1.0.0",
     "vite-plugin-vue-devtools": "^7.7.2",

@@ -8,7 +8,7 @@ import { LocaleMapping } from '@/constant'
 import type { MappingAlgorithm, ThemeConfig } from 'ant-design-vue/es/config-provider/context'
 
 import { theme as antTheme } from 'ant-design-vue/es'
-import { remove } from 'lodash'
+import { remove, type List } from 'lodash'
 import { useLocalStorage } from '@vueuse/core'
 
 import dayjs from 'dayjs'
@@ -16,15 +16,15 @@ import jalali from '@zoomit/dayjs-jalali-plugin'
 import { useI18n } from 'vue-i18n'
 import { initI18n } from '@/i18n'
 
-export const useSettingsStore = defineStore('Setting', () => {
+export const useSettingsStore = defineStore('dongdong setting', () => {
   const settings = useLocalStorage('settings', {
-    direction: DirectionEnum.LTR,
+    direction: DirectionEnum.RTL,
     language: LanguageEnum.FARSI,
-    componentSize: ComponentSizeEnum.MIDDLE,
+    componentSize: ComponentSizeEnum.LARGE,
     fontFamily: FontFamilyEnum.ENGLISH,
-    colorPrimary: '#2893ff',
-    isDark: true,
-    isCompact: true as boolean,
+    colorPrimary: '#2d93ff',
+    isDark: false,
+    isCompact: false,
   })
 
   const appRef = ref()

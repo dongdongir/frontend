@@ -1,9 +1,9 @@
 import { computed } from 'vue'
 import type { ComputedRef } from 'vue'
 import { ComponentSizeEnum } from '@/enums'
-import { usePanelSettingsStore } from '@/stores/settings.store'
+import { useSettingsStore } from '@/stores/settings.store'
 export const useComputedClass = () => {
-  const settingsStore = usePanelSettingsStore()
+  const settingsStore = useSettingsStore()
 
   const getClass = ({
     sm = '',

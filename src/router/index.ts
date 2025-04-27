@@ -7,12 +7,12 @@ const router = createRouter({
     {
       path: '',
       name: 'TheApp',
-      component: () => import('@/layouts/AppLayout.vue'),
+      component: () => import('@/App.vue'),
       children: [
         {
-          path: 'home',
-          name: 'TheHome',
-          component: () => import('@/views/HomeView.vue'),
+          path: '',
+          name: 'AppLayout',
+          component: () => import('@/layouts/AppLayout.vue'),
         },
         {
           path: 'auth',

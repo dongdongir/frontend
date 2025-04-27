@@ -1,11 +1,32 @@
-import { useRequest } from 'vue-request';
-import axios from 'axios';
+import axios, { type AxiosResponse } from 'axios'
 
-const axiosInstance = axios.create({
-  baseURL: '/api', // تنظیم کن بر اساس نیاز
-  timeout: 10000,
-});
+interface Config<T> {
+  method: 'GET' | 'POST' | 'PATCH' | 'DELETE' | 'PUT'
+  url: string
+  body?: T
+}
 
-export function useHttp<T>(url: string, options?: any) {
-  return useRequest<T>(() => axiosInstance.get(url).then((res) => res.data), options);
+export const useHttp = <Req, Res>(config: Config<Req>): Promise<AxiosResponse<Res>> => {
+  const baseUrl = import.meta.env.VITE_APP_API_URL
+  const controller = new AbortController()
+
+  const instance = axios.create({
+    baseURL: baseUrl,
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    timeout: 5000,
+    signal: controller.signal,
+  })
+
+  const { method, url, body } = config
+
+  const requestData = {
+    method,
+    url: url,
+    data: body,
+  }
+
+  return instance(requestData)
 }
