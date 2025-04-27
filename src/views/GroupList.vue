@@ -13,17 +13,11 @@
       </IonHeader>
       <IonList class="mb-8">
         <IonListHeader>لیست گروه ها</IonListHeader>
-        <IonItem router-link="/tabs/groups/1">گروه ۱</IonItem>
-        <IonItem router-link="/tabs/groups/2">گروه ۲</IonItem>
-        <IonItem router-link="/tabs/groups/3">گروه ۳</IonItem>
-        <IonItem router-link="/tabs/groups/4">گروه ۴</IonItem>
-      </IonList>
-      <IonList>
-        <IonListHeader>لیست گروه ها</IonListHeader>
-        <IonItem router-link="/tabs/groups/1">گروه ۱</IonItem>
-        <IonItem router-link="/tabs/groups/2">گروه ۲</IonItem>
-        <IonItem router-link="/tabs/groups/3">گروه ۳</IonItem>
-        <IonItem router-link="/tabs/groups/4">گروه ۴</IonItem>
+        <template v-for="group in groupStore.groupList" :key="group.id">
+          <IonItem :router-link="`/tabs/groups/${group.id}`">
+            {{ group.name }}
+          </IonItem>
+        </template>
       </IonList>
 
       <IonModal ref="modal" trigger="open-modal" @willDismiss="onWillDismiss">
@@ -111,10 +105,14 @@ import {
   IonImg,
   IonSelect,
   IonSelectOption,
+  IonFooter,
 } from "@ionic/vue";
 import { Icon } from "@iconify/vue";
 import { OverlayEventDetail } from "@ionic/core/components";
 import { ref } from "vue";
+import { useGroupStore } from "@/stores/group.store";
+
+const groupStore = useGroupStore();
 
 const message = ref(
   "This modal example uses triggers to automatically open a modal when the button is clicked."
@@ -123,7 +121,9 @@ const message = ref(
 const modal = ref();
 const input = ref();
 
-const cancel = () => modal.value.$el.dismiss(null, "cancel");
+const cancel = () => {
+  modal.value.$el.dismiss(null, "cancel");
+};
 
 const confirm = () => {
   const name = input.value.$el.value;

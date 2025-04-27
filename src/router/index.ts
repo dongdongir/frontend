@@ -15,6 +15,13 @@ const routes: Array<RouteRecordRaw> = [
         path: "groups",
         name: "GroupList",
         component: () => import("@/views/GroupList.vue"),
+        children: [
+          {
+            path: ":id",
+            name: "GroupDetail",
+            component: () => import("@/views/GroupDetail.vue"),
+          },
+        ],
       },
       {
         path: "friends",
