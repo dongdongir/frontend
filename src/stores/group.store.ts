@@ -1,11 +1,7 @@
 import { ref } from "vue";
 import { defineStore } from "pinia";
+import { Group } from "@/interfaces/group.interface";
 
-interface Group {
-  id: string;
-  name: string;
-  members: string[];
-}
 export const useGroupStore = defineStore("dongdong group", () => {
   const group = ref<Group>({} as Group);
   const groupList = ref<Group[]>([
@@ -61,5 +57,41 @@ export const useGroupStore = defineStore("dongdong group", () => {
     },
   ]);
 
-  return { group, groupList };
+  const getGroupById = (id: Group["id"]) => {
+    group.value =
+      groupList.value.find((group) => group.id === id) ?? ({} as Group);
+  };
+  const getGroupByName = (name: Group["name"]) => {
+    return groupList.value.find((group) => group.name === name);
+  };
+  const addGroup = (newGroup: Group) => {
+    const groupExists = groupList.value.some(
+      (group) => group.id === newGroup.id
+    );
+    if (!groupExists) {
+      groupList.value.push(newGroup);
+    } else {
+      const index = groupList.value.findIndex(
+        (group) => group.id === newGroup.id
+      );
+      if (index !== -1) {
+        groupList.value[index] = newGroup;
+      }
+    }
+  };
+  const removeGroup = (id: string) => {
+    const index = groupList.value.findIndex((group) => group.id === id);
+    if (index !== -1) {
+      groupList.value.splice(index, 1);
+    }
+  };
+
+  return {
+    group,
+    groupList,
+    removeGroup,
+    addGroup,
+    getGroupById,
+    getGroupByName,
+  };
 });
