@@ -62,14 +62,6 @@
               <IonSelectOption value="image4">تصویر ۴</IonSelectOption>
               <IonSelectOption value="image5">تصویر ۵</IonSelectOption>
             </IonSelect>
-            <IonInput
-              ref="input"
-              type="text"
-              placeholder="نام گروه جدید"
-              class="mb-4"
-              label="نام گروه جدید"
-              label-placement="floating"
-            />
           </IonItem>
           <IonItem>
             <IonInput
