@@ -16,6 +16,15 @@
         <template v-for="group in groupStore.groupList" :key="group.id">
           <IonItem :router-link="`/tabs/groups/${group.id}`">
             {{ group.name }}
+
+            <IonButton
+              slot="end"
+              fill="clear"
+              color="warning"
+              @click.prevent="editGroup(group)"
+            >
+              <Icon icon="tabler:edit" height="24" />
+            </IonButton>
           </IonItem>
         </template>
       </IonList>
@@ -40,6 +49,7 @@
               class="mb-4"
               label="نام گروه جدید"
               label-placement="floating"
+              v-model="groupStore.group.name"
             />
           </IonItem>
           <IonItem>
@@ -111,9 +121,14 @@ import { Icon } from "@iconify/vue";
 import { OverlayEventDetail } from "@ionic/core/components";
 import { ref } from "vue";
 import { useGroupStore } from "@/stores/group.store";
+import { Group } from "@/interfaces/group.interface";
 
 const groupStore = useGroupStore();
 
+const editGroup = async (id: Group["id"]) => {
+  await groupStore.getGroupById(id);
+  modal.value.$el.present();
+};
 const message = ref(
   "This modal example uses triggers to automatically open a modal when the button is clicked."
 );
@@ -126,8 +141,13 @@ const cancel = () => {
 };
 
 const confirm = () => {
-  const name = input.value.$el.value;
-  modal.value.$el.dismiss(name, "confirm");
+  groupStore.groupList.push({
+    id: String(groupStore.groupList.length + 1),
+    name: groupStore.group.name,
+    members: [],
+  });
+  groupStore.group = {} as Group;
+  modal.value.$el.dismiss(null, "confirm");
 };
 
 const onWillDismiss = (event: CustomEvent<OverlayEventDetail>) => {
