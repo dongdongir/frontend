@@ -1,8 +1,9 @@
-import { ref, computed } from 'vue'
-import { defineStore } from 'pinia'
+import { ref } from "vue";
+import { defineStore } from "pinia";
 
-export const useUserStore = defineStore('dongdong user', () => {
-  const user = ref({})
+export const useUserStore = defineStore("dongdong user", () => {
+  const user = ref({});
+  const userList = ref([]);
 
-  return { user }
-})
+  return { user, userList };
+});
