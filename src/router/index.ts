@@ -8,67 +8,89 @@ const routes: Array<RouteRecordRaw> = [
     redirect: "/auth/login",
   },
   {
-    path: "/auth/login",
-    component: () => import("@/pages/auth/LoginPage.vue"),
+    path: "/auth",
+    children: [
+      {
+        path: "login",
+        name: "Login",
+        component: () => import("@/pages/auth/LoginPage.vue"),
+      },
+      {
+        path: "register",
+        name: "Register",
+        component: () => import("@/pages/auth/RegisterPage.vue"),
+      },
+    ],
   },
   {
-    path: "/auth/register",
-    component: () => import("@/pages/auth/RegisterPage.vue"),
-  },
-  {
-    path: "/balances",
-    component: () => import("@/pages/balances/BalancesListPage.vue"),
-  },
-  {
-    path: "/balances/:id",
-    component: () => import("@/pages/balances/BalanceDetailPage.vue"),
-    props: true,
-  },
-  {
-    path: "/expenses",
-    component: () => import("@/pages/expenses/ExpensesListPage.vue"),
-  },
-  {
-    path: "/expenses/:id",
-    component: () => import("@/pages/expenses/ExpenseDetailPage.vue"),
-    props: true,
-  },
-  {
-    path: "/groups",
-    component: () => import("@/pages/groups/GroupsListPage.vue"),
-  },
-  {
-    path: "/groups/:id",
-    component: () => import("@/pages/groups/GroupDetailPage.vue"),
-    props: true,
-  },
-  {
-    path: "/users",
-    component: () => import("@/pages/users/UsersListPage.vue"),
-  },
-  {
-    path: "/users/:id",
-    component: () => import("@/pages/users/UserDetailPage.vue"),
-    props: true,
-  },
-  {
-    path: "/",
-    redirect: "/tabs/groups",
-  },
-
-  {
-    path: "/tabs/",
+    path: "/tabs",
     component: TabsPage,
     children: [
       {
-        path: "groups",
-        name: "GroupList",
-        component: () => import("@/views/GroupList.vue"),
+        path: "balances",
+        name: "Balances",
         children: [
+          {
+            path: "",
+            name: "BalancesList",
+            component: () => import("@/pages/balances/BalancesListPage.vue"),
+          },
+          {
+            path: ":id",
+            name: "BalanceDetail",
+            component: () => import("@/pages/balances/BalanceDetailPage.vue"),
+            props: true,
+          },
+        ],
+      },
+      {
+        path: "expenses",
+        name: "Expenses",
+        children: [
+          {
+            path: "",
+            name: "ExpensesList",
+            component: () => import("@/pages/expenses/ExpensesListPage.vue"),
+          },
+          {
+            path: ":id",
+            name: "ExpenseDetail",
+            component: () => import("@/pages/expenses/ExpenseDetailPage.vue"),
+            props: true,
+          },
+        ],
+      },
+      {
+        path: "groups",
+        name: "Groups",
+        children: [
+          {
+            path: "",
+            name: "GroupsList",
+            component: () => import("@/pages/groups/GroupsListPage.vue"),
+          },
           {
             path: ":id",
             name: "GroupDetail",
-            component: () => import("@/views/GroupDetail.vue"),
+            component: () => import("@/pages/groups/GroupDetailPage.vue"),
+            props: true,
+          },
+        ],
+      },
+      {
+        path: "users",
+        name: "Users",
+        children: [
+          {
+            path: "",
+            name: "UsersList",
+            component: () => import("@/pages/users/UsersListPage.vue"),
+          },
+          {
+            path: ":id",
+            name: "UserDetail",
+            component: () => import("@/pages/users/UserDetailPage.vue"),
+            props: true,
           },
         ],
       },
@@ -78,6 +100,10 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import("@/views/FriendList.vue"),
       },
     ],
+  },
+  {
+    path: "/:pathMatch(.*)*",
+    redirect: "/tabs/groups",
   },
 ];
 
