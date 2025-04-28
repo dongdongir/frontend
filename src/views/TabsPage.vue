@@ -2,15 +2,30 @@
   <IonPage>
     <IonTabs>
       <IonRouterOutlet />
-      <IonTabBar slot="bottom" class="py-2">
+      <IonTabBar slot="bottom">
+        <IonTabButton tab="balances" href="/tabs/balances">
+          <IonIcon :icon="walletOutline" />
+          <IonLabel>Balances</IonLabel>
+        </IonTabButton>
+
+        <IonTabButton tab="expenses" href="/tabs/expenses">
+          <IonIcon :icon="cashOutline" />
+          <IonLabel>Expenses</IonLabel>
+        </IonTabButton>
+
         <IonTabButton tab="groups" href="/tabs/groups">
-          <Icon icon="material-symbols:groups" width="32" height="32" />
-          <IonLabel>گروه ها</IonLabel>
+          <IonIcon :icon="peopleOutline" />
+          <IonLabel>Groups</IonLabel>
+        </IonTabButton>
+
+        <IonTabButton tab="users" href="/tabs/users">
+          <IonIcon :icon="personOutline" />
+          <IonLabel>Users</IonLabel>
         </IonTabButton>
 
         <IonTabButton tab="friends" href="/tabs/friends">
-          <Icon icon="game-icons:three-friends" width="32" height="32" />
-          <IonLabel>دوستان</IonLabel>
+          <IonIcon :icon="heartOutline" />
+          <IonLabel>Friends</IonLabel>
         </IonTabButton>
       </IonTabBar>
     </IonTabs>
@@ -19,12 +34,19 @@
 
 <script setup lang="ts">
 import {
+  IonPage,
+  IonTabs,
   IonTabBar,
   IonTabButton,
-  IonTabs,
+  IonIcon,
   IonLabel,
-  IonPage,
   IonRouterOutlet,
 } from "@ionic/vue";
-import { Icon } from "@iconify/vue";
+import {
+  walletOutline,
+  cashOutline,
+  peopleOutline,
+  personOutline,
+  heartOutline,
+} from "ionicons/icons";
 </script>
