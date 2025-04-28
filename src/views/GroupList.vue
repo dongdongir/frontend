@@ -21,7 +21,7 @@
               slot="end"
               fill="clear"
               color="warning"
-              @click.prevent="editGroup(group)"
+              @click.prevent="editGroup(group.id)"
             >
               <Icon icon="tabler:edit" height="24" />
             </IonButton>
