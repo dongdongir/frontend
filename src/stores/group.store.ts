@@ -4,7 +4,18 @@ import { GroupEntity } from "@/interfaces/group.interface";
 
 export const useGroupStore = defineStore("dongdong group", () => {
   const group = ref<GroupEntity>({} as GroupEntity);
-  const groupList = ref<GroupEntity[]>([]);
+  const groupList = ref<GroupEntity[]>([
+    {
+      id: "asdasd",
+      name: "شمال",
+      description: "شمال شهریور ",
+      createdById: "",
+      membersId: [],
+      isActive: false,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+  ]);
 
   const getGroupById = (id: GroupEntity["id"]) => {
     group.value =
@@ -28,7 +39,7 @@ export const useGroupStore = defineStore("dongdong group", () => {
       }
     }
   };
-  const removeGroup = (id: GroupEntity['id']) => {
+  const removeGroup = (id: GroupEntity["id"]) => {
     const index = groupList.value.findIndex((group) => group.id === id);
     if (index !== -1) {
       groupList.value.splice(index, 1);
