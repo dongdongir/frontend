@@ -7,6 +7,7 @@
       v-for="group in groupStore.groupList"
       :key="group.id"
       class="flex items-start gap-4 p-4"
+      :router-link="`/tabs/groups/${group.id}`"
     >
       <IonAvatar>
         <img
@@ -51,17 +52,22 @@
             labelMode="floating"
           />
         </IonItem>
-        <div class="flex my-12">
+        <div class="flex my-12 px-4 gap-4">
           <IonButton expand="full" class="flex-1" @click="closeModal">
             ساخت اکیپ
           </IonButton>
-          <IonButton expand="full" class="flex-1" @click="closeModal">
+          <IonButton
+            fill="clear"
+            expand="full"
+            class="flex-1"
+            @click="closeModal"
+          >
             انصراف
           </IonButton>
         </div>
       </IonContent>
     </IonModal>
-    <IonFab vertical="bottom" horizontal="end" slot="fixed" class="me-2 mb-12">
+    <IonFab vertical="bottom" horizontal="end" slot="fixed" class="me-2 mb-16">
       <IonFabButton @click="openModal">
         <Icon icon="tabler:plus" width="28" />
       </IonFabButton>
@@ -88,9 +94,10 @@ import {
 import { Icon } from "@iconify/vue";
 import { useGroupStore } from "@/stores/group.store";
 import { ref } from "vue";
+import { useRouter } from "vue-router";
 import { GroupEntity } from "@/interfaces/group.interface";
 const groupStore = useGroupStore();
-
+const router = useRouter();
 const group = ref<GroupEntity>({} as GroupEntity);
 const isOpen = ref<boolean>(false);
 
