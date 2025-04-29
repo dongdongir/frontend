@@ -8,10 +8,10 @@
           <IonLabel>Balances</IonLabel>
         </IonTabButton> -->
 
-        <!-- <IonTabButton tab="expenses" href="/tabs/expenses">
+        <IonTabButton tab="expenses" href="/tabs/expenses">
           <IonIcon :icon="cashOutline" />
           <IonLabel>Expenses</IonLabel>
-        </IonTabButton> -->
+        </IonTabButton>
 
         <IonTabButton tab="groups" href="/tabs/groups">
           <IonIcon :icon="peopleOutline" />
