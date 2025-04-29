@@ -27,8 +27,11 @@
             <h2>{{ transaction.description }}</h2>
             <p>{{ formatDate(transaction.date) }}</p>
           </IonLabel>
-          <IonNote slot="end" :color="transaction.amount >= 0 ? 'success' : 'danger'">
-            {{ transaction.amount >= 0 ? '+' : '' }}${{ transaction.amount }}
+          <IonNote
+            slot="end"
+            :color="transaction.amount >= 0 ? 'success' : 'danger'"
+          >
+            {{ transaction.amount >= 0 ? "+" : "" }}${{ transaction.amount }}
           </IonNote>
         </IonItem>
       </IonList>
@@ -43,7 +46,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
+import { ref } from "vue";
 import {
   IonPage,
   IonHeader,
@@ -61,8 +64,7 @@ import {
   IonButtons,
   IonBackButton,
 } from "@ionic/vue";
-import { RouterLink } from "vue-router";
-import { addOutline } from 'ionicons/icons';
+import { addOutline } from "ionicons/icons";
 
 interface Transaction {
   id: number;
@@ -77,27 +79,27 @@ const transactions = ref<Transaction[]>([
     id: 1,
     description: "Salary Deposit",
     amount: 3000,
-    date: new Date("2024-01-15")
+    date: new Date("2024-01-15"),
   },
   {
     id: 2,
     description: "Rent Payment",
     amount: -1200,
-    date: new Date("2024-01-10")
+    date: new Date("2024-01-10"),
   },
   {
     id: 3,
     description: "Grocery Shopping",
     amount: -150.25,
-    date: new Date("2024-01-08")
-  }
+    date: new Date("2024-01-08"),
+  },
 ]);
 
 const formatDate = (date: Date): string => {
-  return new Date(date).toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric'
+  return new Date(date).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
   });
 };
 

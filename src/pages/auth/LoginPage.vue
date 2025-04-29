@@ -76,6 +76,12 @@ import {
 } from "@ionic/vue";
 import { RouterLink } from "vue-router";
 
+import { onMounted } from "vue";
+
+onMounted(() => {
+  console.log("Page Mounted Successfully");
+});
+
 const email = ref("");
 const password = ref("");
 const isLoading = ref(false);
