@@ -18,7 +18,10 @@
           <!-- Search Bar -->
           <IonItem>
             <IonLabel position="floating">Search Users</IonLabel>
-            <IonInput v-model="searchQuery" placeholder="Enter name or email"></IonInput>
+            <IonInput
+              v-model="searchQuery"
+              placeholder="Enter name or email"
+            ></IonInput>
           </IonItem>
 
           <!-- User List -->
@@ -28,7 +31,11 @@
                 <h2>{{ user.name }}</h2>
                 <p>{{ user.email }}</p>
               </IonLabel>
-              <IonButton slot="end" fill="clear" :router-link="`/users/${user.id}`">
+              <IonButton
+                slot="end"
+                fill="clear"
+                :router-link="`/users/${user.id}`"
+              >
                 View Details
               </IonButton>
             </IonItem>
@@ -37,11 +44,7 @@
       </IonCard>
 
       <!-- Add User FAB Button -->
-      <IonButton 
-        class="add-user-btn" 
-        expand="block"
-        router-link="/users/new"
-      >
+      <IonButton class="add-user-btn" expand="block" router-link="/users/new">
         <ion-icon :icon="addOutline" slot="start"></ion-icon>
         Add New User
       </IonButton>
