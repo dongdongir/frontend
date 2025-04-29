@@ -28,12 +28,6 @@
       <IonText v-if="filteredMembers.length === 0" class="ion-text-center">
         <p>No members found</p>
       </IonText>
-
-      <IonFab vertical="bottom" horizontal="end" slot="fixed">
-        <IonFabButton @click="addNewMember">
-          <IonIcon :icon="add"></IonIcon>
-        </IonFabButton>
-      </IonFab>
     </IonContent>
   </IonPage>
 </template>
@@ -56,7 +50,7 @@ import {
   IonIcon,
 } from "@ionic/vue";
 import { computed, ref } from "vue";
-import { add } from 'ionicons/icons';
+import { add } from "ionicons/icons";
 
 interface Member {
   id: number;
@@ -64,15 +58,15 @@ interface Member {
   role: string;
 }
 
-const searchText = ref('');
+const searchText = ref("");
 const members = ref<Member[]>([
-  { id: 1, name: 'John Doe', role: 'Admin' },
-  { id: 2, name: 'Jane Smith', role: 'Member' },
+  { id: 1, name: "John Doe", role: "Admin" },
+  { id: 2, name: "Jane Smith", role: "Member" },
   // Add more members as needed
 ]);
 
 const filteredMembers = computed(() => {
-  return members.value.filter(member => 
+  return members.value.filter((member) =>
     member.name.toLowerCase().includes(searchText.value.toLowerCase())
   );
 });
@@ -83,12 +77,12 @@ const handleSearch = (event: CustomEvent) => {
 
 const manageMember = (member: Member) => {
   // Implement member management logic
-  console.log('Managing member:', member);
+  console.log("Managing member:", member);
 };
 
 const addNewMember = () => {
   // Implement add new member logic
-  console.log('Adding new member');
+  console.log("Adding new member");
 };
 </script>
 
