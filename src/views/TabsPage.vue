@@ -3,30 +3,30 @@
     <IonTabs>
       <IonRouterOutlet />
       <IonTabBar slot="bottom">
-        <IonTabButton tab="balances" href="/tabs/balances">
+        <!-- <IonTabButton tab="balances" href="/tabs/balances">
           <IonIcon :icon="walletOutline" />
           <IonLabel>Balances</IonLabel>
-        </IonTabButton>
+        </IonTabButton> -->
 
-        <IonTabButton tab="expenses" href="/tabs/expenses">
+        <!-- <IonTabButton tab="expenses" href="/tabs/expenses">
           <IonIcon :icon="cashOutline" />
           <IonLabel>Expenses</IonLabel>
-        </IonTabButton>
+        </IonTabButton> -->
 
         <IonTabButton tab="groups" href="/tabs/groups">
           <IonIcon :icon="peopleOutline" />
           <IonLabel>Groups</IonLabel>
         </IonTabButton>
 
-        <IonTabButton tab="users" href="/tabs/users">
+        <!-- <IonTabButton tab="users" href="/tabs/users">
           <IonIcon :icon="personOutline" />
           <IonLabel>Users</IonLabel>
-        </IonTabButton>
+        </IonTabButton> -->
 
-        <IonTabButton tab="friends" href="/tabs/friends">
+        <!-- <IonTabButton tab="friends" href="/tabs/friends">
           <IonIcon :icon="heartOutline" />
           <IonLabel>Friends</IonLabel>
-        </IonTabButton>
+        </IonTabButton> -->
       </IonTabBar>
     </IonTabs>
   </IonPage>
